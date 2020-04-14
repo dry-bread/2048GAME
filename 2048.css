@@ -1,0 +1,141 @@
+body{
+    background-color: blanchedalmond;
+}
+.allContent{
+    text-align: center;
+}
+#gameName{
+    font-size: 400%;
+    font-weight: bolder;
+    color: chocolate; 
+    text-align:left;
+    display: inline-block;
+    line-height: 84px;   
+
+}
+.score{
+    background-color: coral;
+    height: 70%;
+    border-radius: 20%;
+    text-align: center;
+    color: white;
+    margin-left: 2%;
+    margin-bottom: 0%;
+    margin-top: 10px;
+    font-size: large;
+}
+button#replay{
+    border: none;
+    background-color: crimson;
+    height: 70%;
+    margin-bottom: 0%;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+}
+#game .col-3{
+    padding: 0px;
+}
+#game .con{
+    background-color:rgb(249, 227, 177);
+    height: 100px;
+    margin: 2px 2px 2px 2px;
+    border-radius: 10%;
+    padding: 0%;
+}
+.number2{
+    background-color: whitesmoke;
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(153, 116, 56);
+}
+.number4{
+    background-color:rgb(253, 230, 193);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(153, 116, 56);
+}
+.number8{
+    background-color:rgb(248, 190, 163);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(153, 116, 56);
+}
+.number16{
+    background-color:rgb(250, 156, 101);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color:whitesmoke;
+}
+.number32{
+    background-color:rgb(250, 125, 67);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color:whitesmoke;
+}
+.number64{
+    background-color:rgb(253, 92, 17);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 60px;
+    color:whitesmoke;
+}
+.number128{
+    background-color:rgb(248, 59, 52);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 50px;
+    line-height: 100px;
+    color:whitesmoke;
+}
+.numberMore{
+    background-color:red;
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 50px;
+    color:whitesmoke;
+    line-height: 100px;
+}
+.number1024{
+    background-color:rgb(212, 50, 50);
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 40px;
+    color:whitesmoke;
+    line-height: 100px;
+
+}
+.number2048{
+    background-color:brown;
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 40px;
+    color:whitesmoke;
+    line-height: 100px;
+
+}
