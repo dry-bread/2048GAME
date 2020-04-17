@@ -540,14 +540,14 @@ $(window).on("touchend", function (e) {
     Y = moveEndY - startY;
     //左右滑
     if (Math.abs(X) >Math.abs(Y) ) {
-        if(X>0){//左滑
+        if(X<0){//左滑
             LeftArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
                 AddFlag = 0;
             }
         }
-        if(X<0){//右滑
+        if(X>0){//右滑
             RightArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
