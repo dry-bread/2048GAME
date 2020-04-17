@@ -524,7 +524,7 @@ $(window).on("touchstart", function (e) {
         }
     }
     startX = e.originalEvent.changedTouches[0].pageX,
-        startY = e.originalEvent.changedTouches[0].pageY;
+    startY = e.originalEvent.changedTouches[0].pageY;
 });
 $(window).on("touchend", function (e) {
     // 判断默认行为是否可以被禁用
@@ -535,11 +535,11 @@ $(window).on("touchend", function (e) {
         }
     }
     moveEndX = e.originalEvent.changedTouches[0].pageX,
-        moveEndY = e.originalEvent.changedTouches[0].pageY,
-        X = moveEndX - startX,
-        Y = moveEndY - startY;
+    moveEndY = e.originalEvent.changedTouches[0].pageY,
+    X = moveEndX - startX,
+    Y = moveEndY - startY;
     //左右滑
-    if (X > Y) {
+    if (Math.abs(X) >Math.abs(Y) ) {
         if(X>0){//左滑
             LeftArrow();
             if (AddFlag === 1) {
@@ -556,21 +556,24 @@ $(window).on("touchend", function (e) {
         }
     }
     //上下滑
-    if (Y < X) {
-        if(Y>0){//上滑
+    if (Math.abs(X) <Math.abs(Y) ) {
+        if(Y<0){//上滑
             UpArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
                 AddFlag = 0;
             }
         }
-        if(Y<0){//下滑
+        if(Y>0){//下滑
             DownArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
                 AddFlag = 0;
             }
+        }else{
+            $('.youWin').hide();
         }
+        
 
     }
 });
