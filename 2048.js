@@ -514,20 +514,20 @@ var moveEndX;
 var moveEndY;
 var X;
 var Y;
-$(window).on("swipeleft",function(){
-    LeftArrow();
-    if (AddFlag === 1) {
-        AddNewNumber();
-        AddFlag = 0;
-    }
-  });
-  $(window).on("swiperight",function(){
-    RightArrow();
-    if (AddFlag === 1) {
-        AddNewNumber();
-        AddFlag = 0;
-    }
-  });
+// $(window).on("swipeleft",function(){
+//     LeftArrow();
+//     if (AddFlag === 1) {
+//         AddNewNumber();
+//         AddFlag = 0;
+//     }
+//   });
+//   $(window).on("swiperight",function(){
+//     RightArrow();
+//     if (AddFlag === 1) {
+//         AddNewNumber();
+//         AddFlag = 0;
+//     }
+//   });
 $(window).on("touchstart", function (e) {
     // 判断默认行为是否可以被禁用
     if (e.cancelable) {
@@ -536,7 +536,7 @@ $(window).on("touchstart", function (e) {
             e.preventDefault();
         }
     }
-    //startX = e.originalEvent.changedTouches[0].pageX,
+    startX = e.originalEvent.changedTouches[0].pageX,
     startY = e.originalEvent.changedTouches[0].pageY;
 });
 $(window).on("touchend", function (e) {
@@ -547,37 +547,37 @@ $(window).on("touchend", function (e) {
             e.preventDefault();
         }
     }
-   // moveEndX = e.originalEvent.changedTouches[0].pageX,
+    moveEndX = e.originalEvent.changedTouches[0].pageX,
     moveEndY = e.originalEvent.changedTouches[0].pageY,
-    //X = moveEndX - startX,
+    X = moveEndX - startX,
     Y = moveEndY - startY;
     // //左右滑
-    // if (Math.abs(Y)>30 ) {
-    //     if(X<0){//左滑
-    //         LeftArrow();
-    //         if (AddFlag === 1) {
-    //             AddNewNumber();
-    //             AddFlag = 0;
-    //         }
-    //     }
-    //     if(X>0){//右滑
-    //         RightArrow();
-    //         if (AddFlag === 1) {
-    //             AddNewNumber();
-    //             AddFlag = 0;
-    //         }
-    //     }
-    // }
+    if (Math.abs(X)>Math.abs(Y) ) {
+        if(X<-30){//左滑
+            LeftArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+        if(X>30){//右滑
+            RightArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+    }
     //上下滑
-    if (Math.abs(Y)>30 ) {
-        if(Y<0){//上滑
+    if (Math.abs(X)<Math.abs(Y) ) {
+        if(Y<-30){//上滑
             UpArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
                 AddFlag = 0;
             }
         }
-        if(Y>0){//下滑
+        if(Y>30){//下滑
             DownArrow();
             if (AddFlag === 1) {
                 AddNewNumber();
