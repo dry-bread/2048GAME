@@ -157,7 +157,7 @@ button#replay{
     font-size: 700%;
     top:0%;
     padding-top: 15%;
-    padding-left: 37%;
+    text-align: center;
     opacity:0.5;
     color: red;
 }

@@ -2,10 +2,10 @@
 var gameCon;
 const animationTime = 1000;
 var AddFlag = 0;
-var nowScore='#nowScore>span';
-var bestHistory='#bestHistory>span';
-var nowScoreNumber=0;
-var bestHistoryNumber=0;
+var nowScore = '#nowScore>span';
+var bestHistory = '#bestHistory>span';
+var nowScoreNumber = 0;
+var bestHistoryNumber = 0;
 function init() {
     $('#game .con>div').remove();
     if (!localStorage.getItem("gameCon")) {
@@ -15,14 +15,14 @@ function init() {
             [0, 0, 0, 0],
             [0, 0, 0, 0]
         ];
-        nowScoreNumber=0;
+        nowScoreNumber = 0;
         localStorage.setItem("gameCon", JSON.stringify(gameCon));
-        localStorage.setItem("nowScore", JSON.stringify(nowScoreNumber));
+        localStorage.setItem("nowScore", nowScoreNumber);
         AddNewNumber();
     } else {
         gameCon = JSON.parse(localStorage.getItem("gameCon"));
-        nowScoreNumber=JSON.parse(localStorage.getItem("nowScore"));
-        bestHistoryNumber=JSON.parse(localStorage.getItem("bestHistory"));
+        nowScoreNumber = Number(localStorage.getItem("nowScore"));
+        bestHistoryNumber = Number(localStorage.getItem("bestHistory"));
         UpDateScore(0);
     }
     gameCon.forEach(function (element, index, array) {
@@ -34,15 +34,15 @@ function init() {
     });
 
 }
-function UpDateScore(addScoreNumber){
+function UpDateScore(addScoreNumber) {
     nowScoreNumber += addScoreNumber;
-    if(nowScoreNumber >bestHistoryNumber){
-        bestHistoryNumber=nowScoreNumber;
+    if (nowScoreNumber > bestHistoryNumber) {
+        bestHistoryNumber = nowScoreNumber;
     }
-    $(nowScore).text(nowScoreNumber.toString()) ;
-    $(bestHistory).text(bestHistoryNumber.toString()) ;
-    localStorage.setItem("nowScore", JSON.stringify(nowScoreNumber));
-    localStorage.setItem("bestHistory", JSON.stringify(bestHistoryNumber));
+    $(nowScore).text(nowScoreNumber.toString());
+    $(bestHistory).text(bestHistoryNumber.toString());
+    localStorage.setItem("nowScore", nowScoreNumber);
+    localStorage.setItem("bestHistory", bestHistoryNumber);
 
 }
 //添加数字块
@@ -55,6 +55,31 @@ function AddNewCon(x, y, num) {
     adddiv.classList.add(className);
     var idName = '#c' + x.toString() + y.toString();
     $(idName).append(adddiv);
+}
+function CheckLose() {
+    var gameConTemp = gameCon;
+    for (let dp_i = 0; dp_i < 3; dp_i++) {
+        for (let dp_j = 0; dp_j < 3; dp_j++) {
+            if (gameConTemp[dp_i][dp_j] === gameConTemp[dp_i][dp_j + 1] || gameConTemp[dp_i][dp_j] === gameConTemp[dp_i + 1][dp_j]) {
+                return 'notlose';
+            }
+        }
+
+    }
+    for (let dp_i = 0; dp_i < 3; dp_i++) {
+        if (gameConTemp[dp_i][3] === gameConTemp[dp_i + 1][3]) {
+            return 'notlose';
+        }
+
+
+    }
+    for (let dp_i = 0; dp_i < 3; dp_i++) {
+        if (gameConTemp[3][dp_i] === gameConTemp[3][dp_i + 1]) {
+            return 'notlose';
+        }
+    }
+    return 'lose';
+
 }
 
 //寻找空白区域，随机放入2或4
@@ -70,13 +95,27 @@ function AddNewNumber() {
         });
     });
     if (emptyCon_x.length === 0) {
-        return 'game over!'
+        if (CheckLose() === 'lose') {
+            $('.youWin>p').text('LOSE!');
+            $('.youWin').show();
+            return;
+        } else {
+            return;
+        }
     }
     var choosenIndex = parseInt(Math.random() * emptyCon_x.length);
     var addNumber = 2 * parseInt(1.5 + Math.random());//2或4
     gameCon[emptyCon_x[choosenIndex]][emptyCon_y[choosenIndex]] = addNumber;
     localStorage.setItem("gameCon", JSON.stringify(gameCon));
     AddNewCon(emptyCon_x[choosenIndex], emptyCon_y[choosenIndex], addNumber);
+    if (emptyCon_x.length === 1) {
+        if (CheckLose() === 'lose') {
+            $('.youWin>p').text('LOSE!');
+            $('.youWin').show();
+            return;
+        }
+    }
+
 }
 //水平合并动画
 function LevelCombine(x, init_y, target_y, target_num, shift_combine) {
@@ -213,6 +252,10 @@ function MoveCon(init_x, init_y, target_x, target_y, target_num) {
     addDiv.classList.add(targetClassName);
     addDiv.innerText = target_num;
     $(targetSName).append(addDiv);
+    if (target_num === 2048) {
+        $('youWin').text('YOU WIN!');
+        $('youWin').show();
+    }
 }
 //向左
 function LeftArrow() {
@@ -249,7 +292,7 @@ function LeftArrow() {
                     // console.log('step-2');
                     // console.log(gameCon);
                     MoveCon(i, j, i, temp, gameCon[i][temp]);
-                    
+
                 }
             }
         }
@@ -333,10 +376,10 @@ function DownArrow() {
                     }
 
                 }
-                if (temp < i || temp=== -1) {
+                if (temp < i || temp === -1) {
                     continue;
                 }
-                else{//下移
+                else {//下移
                     gameCon[temp][j] = gameCon[i][j];
                     gameCon[i][j] = 0;
                     AddFlag = 1;
@@ -407,7 +450,6 @@ $(window).keydown(function (e) {
                 AddNewNumber();
                 AddFlag = 0;
             }
-
             break;
         case 38:
             UpArrow();
@@ -445,10 +487,90 @@ $('button#replay').click(function (e) {
         [0, 0, 0, 0]
     ];
     $('#game .con>div').remove();
-    nowScoreNumber=0;
+    nowScoreNumber = 0;
     $(nowScore).text(nowScoreNumber.toString());
-    localStorage.setItem("gameCon", JSON.stringify(gameCon));
-    localStorage.setItem("nowScore", JSON.stringify($(nowScore).text()));
+    localStorage.setItem("gameCon", gameCon);
+    localStorage.setItem("nowScore", nowScoreNumber);
     AddNewNumber();
     AddNewNumber();
 })
+$(window).click(function () {
+    $('.youWin').hide();
+});
+$("body").on("touchstart", function (e) {
+    // 判断默认行为是否可以被禁用
+    if (e.cancelable) {
+        // 判断默认行为是否已经被禁用
+        if (!e.defaultPrevented) {
+            e.preventDefault();
+        }
+    }
+    startX = e.originalEvent.changedTouches[0].pageX,
+        startY = e.originalEvent.changedTouches[0].pageY;
+});
+var startX;
+var startY;
+var moveEndX;
+var moveEndY;
+var X;
+var Y;
+
+$(window).on("touchstart", function (e) {
+    // 判断默认行为是否可以被禁用
+    if (e.cancelable) {
+        // 判断默认行为是否已经被禁用
+        if (!e.defaultPrevented) {
+            e.preventDefault();
+        }
+    }
+    startX = e.originalEvent.changedTouches[0].pageX,
+        startY = e.originalEvent.changedTouches[0].pageY;
+});
+$(window).on("touchend", function (e) {
+    // 判断默认行为是否可以被禁用
+    if (e.cancelable) {
+        // 判断默认行为是否已经被禁用
+        if (!e.defaultPrevented) {
+            e.preventDefault();
+        }
+    }
+    moveEndX = e.originalEvent.changedTouches[0].pageX,
+        moveEndY = e.originalEvent.changedTouches[0].pageY,
+        X = moveEndX - startX,
+        Y = moveEndY - startY;
+    //左右滑
+    if (X > Y) {
+        if(X>0){//左滑
+            LeftArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+        if(X<0){//右滑
+            RightArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+    }
+    //上下滑
+    if (Y < X) {
+        if(Y>0){//上滑
+            UpArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+        if(Y<0){//下滑
+            DownArrow();
+            if (AddFlag === 1) {
+                AddNewNumber();
+                AddFlag = 0;
+            }
+        }
+
+    }
+});
