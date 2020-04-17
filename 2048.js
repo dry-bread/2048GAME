@@ -592,6 +592,22 @@ $(window).on("touchend", function (e) {
 });
 $('.youWin').on("tap",function(){
     $('.youWin').hide();
+    if($('.youWin')==='LOSE!'){
+        gameCon = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ];
+        $('#game .con>div').remove();
+        nowScoreNumber = 0;
+        $(nowScore).text(nowScoreNumber.toString());
+        localStorage.setItem("gameCon", gameCon);
+        localStorage.setItem("nowScore", nowScoreNumber);
+        AddNewNumber();
+        AddNewNumber();
+
+    }
 })
 $('button#replay').on("tap",function(){
     gameCon = [
