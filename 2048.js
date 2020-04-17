@@ -592,7 +592,7 @@ $(window).on("touchend", function (e) {
 });
 $('.youWin').on("tap",function(){
     $('.youWin').hide();
-    if($('.youWin')==='LOSE!'){
+    if($('.youWin').text()==='LOSE!'){
         gameCon = [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
