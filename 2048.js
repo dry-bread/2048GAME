@@ -592,7 +592,6 @@ $(window).on("touchend", function (e) {
 });
 $('.youWin').on("tap",function(){
     $('.youWin').hide();
-    if($('.youWin').text()==='LOSE!'){
         gameCon = [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
@@ -607,9 +606,9 @@ $('.youWin').on("tap",function(){
         AddNewNumber();
         AddNewNumber();
 
-    }
+    
 })
-$('button#replay').on("tap",function(){
+$('button').on("tap",function(){
     gameCon = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
