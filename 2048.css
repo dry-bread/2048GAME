@@ -107,7 +107,17 @@ button#replay{
     line-height: 100px;
     color:whitesmoke;
 }
-.numberMore{
+.number256{
+    background-color:red;
+    margin: 0;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 50px;
+    color:whitesmoke;
+    line-height: 100px;
+}
+.number512{
     background-color:red;
     margin: 0;
     height: 100px;
@@ -138,4 +148,16 @@ button#replay{
     color:whitesmoke;
     line-height: 100px;
 
+}
+.youWin{
+    position: fixed;
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+    font-size: 700%;
+    top:0%;
+    padding-top: 15%;
+    padding-left: 37%;
+    opacity:0.5;
+    color: red;
 }
