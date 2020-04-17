@@ -110,7 +110,7 @@ function AddNewNumber() {
     AddNewCon(emptyCon_x[choosenIndex], emptyCon_y[choosenIndex], addNumber);
     if (emptyCon_x.length === 1) {
         if (CheckLose() === 'lose') {
-            $('.youWin>p').text('LOSE!');
+            $('.youWin>p').text('Game Over');
             $('.youWin').show();
             return;
         }
@@ -514,7 +514,20 @@ var moveEndX;
 var moveEndY;
 var X;
 var Y;
-
+$(window).on("swipeleft",function(){
+    LeftArrow();
+    if (AddFlag === 1) {
+        AddNewNumber();
+        AddFlag = 0;
+    }
+  });
+  $(window).on("swiperight",function(){
+    RightArrow();
+    if (AddFlag === 1) {
+        AddNewNumber();
+        AddFlag = 0;
+    }
+  });
 $(window).on("touchstart", function (e) {
     // 判断默认行为是否可以被禁用
     if (e.cancelable) {
@@ -523,7 +536,7 @@ $(window).on("touchstart", function (e) {
             e.preventDefault();
         }
     }
-    startX = e.originalEvent.changedTouches[0].pageX,
+    //startX = e.originalEvent.changedTouches[0].pageX,
     startY = e.originalEvent.changedTouches[0].pageY;
 });
 $(window).on("touchend", function (e) {
@@ -534,29 +547,29 @@ $(window).on("touchend", function (e) {
             e.preventDefault();
         }
     }
-    moveEndX = e.originalEvent.changedTouches[0].pageX,
+   // moveEndX = e.originalEvent.changedTouches[0].pageX,
     moveEndY = e.originalEvent.changedTouches[0].pageY,
-    X = moveEndX - startX,
+    //X = moveEndX - startX,
     Y = moveEndY - startY;
-    //左右滑
-    if (Math.abs(X) >Math.abs(Y) ) {
-        if(X<0){//左滑
-            LeftArrow();
-            if (AddFlag === 1) {
-                AddNewNumber();
-                AddFlag = 0;
-            }
-        }
-        if(X>0){//右滑
-            RightArrow();
-            if (AddFlag === 1) {
-                AddNewNumber();
-                AddFlag = 0;
-            }
-        }
-    }
+    // //左右滑
+    // if (Math.abs(Y)>30 ) {
+    //     if(X<0){//左滑
+    //         LeftArrow();
+    //         if (AddFlag === 1) {
+    //             AddNewNumber();
+    //             AddFlag = 0;
+    //         }
+    //     }
+    //     if(X>0){//右滑
+    //         RightArrow();
+    //         if (AddFlag === 1) {
+    //             AddNewNumber();
+    //             AddFlag = 0;
+    //         }
+    //     }
+    // }
     //上下滑
-    if (Math.abs(X) <Math.abs(Y) ) {
+    if (Math.abs(Y)>30 ) {
         if(Y<0){//上滑
             UpArrow();
             if (AddFlag === 1) {
@@ -576,4 +589,22 @@ $(window).on("touchend", function (e) {
         
 
     }
+});
+$('.youWin').on("tap",function(){
+    $('.youWin').hide();
+})
+$('button#replay').on("tap",function(){
+    gameCon = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ];
+    $('#game .con>div').remove();
+    nowScoreNumber = 0;
+    $(nowScore).text(nowScoreNumber.toString());
+    localStorage.setItem("gameCon", gameCon);
+    localStorage.setItem("nowScore", nowScoreNumber);
+    AddNewNumber();
+    AddNewNumber();
 });
