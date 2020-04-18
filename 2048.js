@@ -61,9 +61,9 @@ function AddNewCon(x, y, num) {
         $(idName).append(adddiv);
         idName = '#c' + x.toString() + y.toString()+'>div';
         $(idName).hide();
-        $(idName).fadeIn(animationTime);
+        $(idName).fadeIn(10);
 
-        console.log('added: ('+x+','+ y+')'+num);
+        // console.log('added: ('+x+','+ y+')'+num);
 
     };
 
