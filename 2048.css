@@ -51,6 +51,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color: rgb(153, 116, 56);
+    z-index: 50;
 }
 .number4{
     background-color:rgb(253, 230, 193);
@@ -60,6 +61,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color: rgb(153, 116, 56);
+    z-index: 50;
 }
 .number8{
     background-color:rgb(248, 190, 163);
@@ -69,6 +71,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color: rgb(153, 116, 56);
+    z-index: 50;
 }
 .number16{
     background-color:rgb(250, 156, 101);
@@ -78,6 +81,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
+    z-index: 50;
 }
 .number32{
     background-color:rgb(250, 125, 67);
@@ -87,6 +91,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
+    z-index: 50;
 }
 .number64{
     background-color:rgb(253, 92, 17);
@@ -96,6 +101,7 @@ button#replay{
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
+    z-index: 50;
 }
 .number128{
     background-color:rgb(248, 59, 52);
@@ -106,6 +112,7 @@ button#replay{
     font-size: 50px;
     line-height: 100px;
     color:whitesmoke;
+    z-index: 50;
 }
 .number256{
     background-color:red;
@@ -116,6 +123,7 @@ button#replay{
     font-size: 50px;
     color:whitesmoke;
     line-height: 100px;
+    z-index: 50;
 }
 .number512{
     background-color:red;
@@ -126,6 +134,7 @@ button#replay{
     font-size: 50px;
     color:whitesmoke;
     line-height: 100px;
+    z-index: 50;
 }
 .number1024{
     background-color:rgb(212, 50, 50);
@@ -136,6 +145,7 @@ button#replay{
     font-size: 40px;
     color:whitesmoke;
     line-height: 100px;
+    z-index: 50;
 
 }
 .number2048{
@@ -147,6 +157,7 @@ button#replay{
     font-size: 40px;
     color:whitesmoke;
     line-height: 100px;
+    z-index: 50;
 
 }
 .youWin{
@@ -160,4 +171,5 @@ button#replay{
     text-align: center;
     opacity:0.5;
     color: red;
+    z-index: 100;
 }

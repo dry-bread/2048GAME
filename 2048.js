@@ -1,6 +1,6 @@
 'use strict';
 var gameCon;
-const animationTime = 1000;
+const animationTime = 100;
 var AddFlag = 0;
 var nowScore = '#nowScore>span';
 var bestHistory = '#bestHistory>span';
@@ -49,12 +49,18 @@ function UpDateScore(addScoreNumber) {
 function AddNewCon(x, y, num) {
     x += 1;
     y += 1;
+    console.log('add: ('+x+','+ y+')'+num);
     var adddiv = document.createElement('div');
     adddiv.innerText = num;
     var className = 'number' + num.toString();
     adddiv.classList.add(className);
     var idName = '#c' + x.toString() + y.toString();
     $(idName).append(adddiv);
+    idName = '#c' + x.toString() + y.toString()+'>div';
+    $(idName).show();
+    console.log('added: ('+x+','+ y+')'+num);
+
+   // $(idName).fadeIn('fast');
 }
 function CheckLose() {
     var gameConTemp = gameCon;
@@ -117,124 +123,24 @@ function AddNewNumber() {
     }
 
 }
-//水平合并动画
-function LevelCombine(x, init_y, target_y, target_num, shift_combine) {
-    x++;
-    init_y++;
-    target_y++;
-    var tempTime = parseInt(animationTime / (Math.abs(target_y - init_y) + 1));
-    if (target_y < init_y) {
-        var TempIdName;
-        var adddiv;
-        if (shift_combine == 'shift') {
-            var className = 'number' + target_num.toString();
-        } else {
-            var className = 'number' + (parseInt(target_num / 2)).toString();
+function AnimateEnd(init_x, init_y, target_x, target_y, target_num){
+    return     function (){
+    console.log('('+init_x+','+init_y+') to ('+target_x+','+target_y+')');
+        var initSName = '#c' + init_x.toString() + init_y.toString() + '>div';
+        var targetSName = '#c' + target_x.toString() + target_y.toString() + '>div';
+        var targetClassName = 'number' + target_num.toString();
+        $(initSName).remove();
+        $(targetSName).remove();
+        targetSName = '#c' + target_x.toString() + target_y.toString();
+        var addDiv = document.createElement('div');
+        addDiv.classList.add(targetClassName);
+        addDiv.innerText = target_num;
+        $(targetSName).append(addDiv);
+        if (target_num === 2048) {
+            $('youWin').text('YOU WIN!');
+            $('youWin').show();
         }
-        TempIdName = '#c' + x.toString() + init_y.toString() + '>div';
-        $(TempIdName).remove();
-        for (let temp_y = init_y; temp_y > target_y; temp_y--) {
-            adddiv = document.createElement('div');
-            adddiv.classList.add(className);
-            TempIdName = '#c' + x.toString() + temp_y.toString();
-            $(TempIdName).append(adddiv);
-            TempIdName = '#c' + x.toString() + temp_y.toString() + '>div'
-            // $(TempIdName).animate({ width: "0px" }, tempTime, function () {
-            // $(this).remove();
-            // });
-            $(TempIdName).remove();
-        }
-        adddiv = document.createElement('div');
-        className = 'number' + target_num.toString();
-        adddiv.classList.add(className);
-        adddiv.innerText = target_num;
-        TempIdName = '#c' + x.toString() + target_y.toString();
-        $(TempIdName).append(adddiv);
-
     }
-    if (target_y > init_y) {
-        var TempIdName;
-        var adddiv;
-        var className = 'number' + (parseInt(target_num / 2)).toString();
-        TempIdName = '#c' + x.toString() + init_y.toString() + '>div';
-        $(TempIdName).remove();
-        for (let temp_y = init_y; temp_y < target_y; temp_y++) {
-            adddiv = document.createElement('div');
-            adddiv.classList.add(className);
-            TempIdName = '#c' + x.toString() + temp_y.toString();
-            $(TempIdName).append(adddiv);
-            TempIdName = '#c' + x.toString() + temp_y.toString() + '>div'
-            // $(TempIdName).animate({ width: "0px", left: "101px" }, tempTime, function () {
-            //     $(this).remove();
-            // });
-            $(TempIdName).append(adddiv);
-        }
-        adddiv = document.createElement('div');
-        className = 'number' + target_num.toString();
-        adddiv.classList.add(className);
-        adddiv.innerText = target_num;
-        TempIdName = '#c' + x.toString() + target_y.toString() + '>div';
-        $(TempIdName).remove();
-        TempIdName = '#c' + x.toString() + target_y.toString();
-        $(TempIdName).append(adddiv);
-
-    }
-
-}
-//垂直合并动画
-function VerticalCombine(y, init_x, target_x, target_num, shift_combine) {
-    var tempTime = parseInt(animationTime / (Math.abs(target_x - init_x) + 1));
-    if (target_x < init_x) {
-        var TempIdName;
-        var adddiv = document.createElement('div');
-        if (shift_combine == 'shift') {
-            var className = 'number' + target_num.toString();
-        } else {
-            var className = 'number' + (parseInt(target_num / 2)).toString();
-        }
-        adddiv.classList.add(className);
-        TempIdName = '#c' + init_x.toString() + y.toString() + '>div';
-        $(TempIdName).remove();
-        for (let temp_x = init_x; temp_x > target_x; temp_x--) {
-            TempIdName = '#c' + temp_x.toString() + y.toString();
-            $(TempIdName).append(adddiv);
-            TempIdName = '#c' + temp_x.toString() + y.toString() + '>div'
-            $(TempIdName).animate({ height: "0px" }, tempTime, function () {
-                $(this).remove();
-            })
-        }
-        adddiv.classList.remove(className);
-        className = 'number' + target_num.toString();
-        adddiv.classList.add(className);
-        adddiv.innerText = target_num;
-        TempIdName = '#c' + target_x.toString() + y.toString();
-        $(TempIdName).append(adddiv);
-
-    }
-    if (target_x > init_x) {
-        var TempIdName;
-        var adddiv = document.createElement('div');
-        var className = 'number' + (parseInt(target_num / 2)).toString();
-        adddiv.classList.add(className);
-        TempIdName = '#c' + init_x.toString() + y.toString() + '>div';
-        $(TempIdName).remove();
-        for (let temp_x = init_x; temp_x < target_x; temp_y++) {
-            TempIdName = '#c' + temp_x.toString() + y.toString();
-            $(TempIdName).append(adddiv);
-            TempIdName = '#c' + temp_x.toString() + y.toString() + '>div'
-            $(TempIdName).animate({ height: "0px", top: "100px" }, tempTime, function () {
-                $(this).remove();
-            })
-        }
-        adddiv.classList.remove(className);
-        className = 'number' + target_num.toString();
-        adddiv.classList.add(className);
-        adddiv.innerText = target_num;
-        TempIdName = '#c' + target_x.toString() + y.toString();
-        $(TempIdName).append(adddiv);
-
-    }
-
 }
 //移动
 function MoveCon(init_x, init_y, target_x, target_y, target_num) {
@@ -242,20 +148,30 @@ function MoveCon(init_x, init_y, target_x, target_y, target_num) {
     init_y++;
     target_x++;
     target_y++;
-    var targetClassName = 'number' + target_num.toString();
     var initSName = '#c' + init_x.toString() + init_y.toString() + '>div';
-    var targetSName = '#c' + target_x.toString() + target_y.toString() + '>div';
-    $(initSName).remove();
-    $(targetSName).remove();
-    targetSName = '#c' + target_x.toString() + target_y.toString();
-    var addDiv = document.createElement('div');
-    addDiv.classList.add(targetClassName);
-    addDiv.innerText = target_num;
-    $(targetSName).append(addDiv);
-    if (target_num === 2048) {
-        $('youWin').text('YOU WIN!');
-        $('youWin').show();
+    console.log('('+init_x+','+init_y+') to ('+target_x+','+target_y+')');
+    if(init_y>target_y){
+        var moveLength='-='+((init_y-target_y)*105).toString()+'px';
+        //console.log(moveLength);
+        $(initSName).css('position','relative');
+        $(initSName).animate({left:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
     }
+    if(init_y<target_y){
+        var moveLength='-='+((target_y-init_y)*105).toString()+'px';
+        $(initSName).css('position','relative');
+        $(initSName).animate({right:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+    }
+    if(init_x<target_x){
+        var moveLength='+='+((target_x-init_x)*104).toString()+'px';
+        $(initSName).css('position','relative');
+        $(initSName).animate({top:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+    }
+    if(init_x>target_x){
+        var moveLength='-='+((init_x-target_x)*104).toString()+'px';
+        $(initSName).css('position','relative');
+        $(initSName).animate({top:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+    }
+
 }
 //向左
 function LeftArrow() {
