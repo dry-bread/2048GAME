@@ -1,6 +1,6 @@
 'use strict';
 var gameCon;
-const animationTime = 100;
+const animationTime = 20;
 var AddFlag = 0;
 var nowScore = '#nowScore>span';
 var bestHistory = '#bestHistory>span';
@@ -49,18 +49,23 @@ function UpDateScore(addScoreNumber) {
 function AddNewCon(x, y, num) {
     x += 1;
     y += 1;
-    console.log('add: ('+x+','+ y+')'+num);
-    var adddiv = document.createElement('div');
-    adddiv.innerText = num;
-    var className = 'number' + num.toString();
-    adddiv.classList.add(className);
-    var idName = '#c' + x.toString() + y.toString();
-    $(idName).append(adddiv);
-    idName = '#c' + x.toString() + y.toString()+'>div';
-    $(idName).show();
-    console.log('added: ('+x+','+ y+')'+num);
+    var addAnimate = function () {
+        console.log('add: ('+x+','+ y+')'+num);
+        var adddiv = document.createElement('div');
+        adddiv.innerText = num;
+        var className = 'number' + num.toString();
+        adddiv.classList.add(className);
+        var idName = '#c' + x.toString() + y.toString();
+        $(idName).append(adddiv);
+        idName = '#c' + x.toString() + y.toString()+'>div';
+        $(idName).hide();
+        $(idName).fadeIn(50);
 
-   // $(idName).fadeIn('fast');
+        console.log('added: ('+x+','+ y+')'+num);
+
+    };
+
+    setTimeout(addAnimate, animationTime*10);
 }
 function CheckLose() {
     var gameConTemp = gameCon;
@@ -154,22 +159,22 @@ function MoveCon(init_x, init_y, target_x, target_y, target_num) {
         var moveLength='-='+((init_y-target_y)*105).toString()+'px';
         //console.log(moveLength);
         $(initSName).css('position','relative');
-        $(initSName).animate({left:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+        $(initSName).animate({left:moveLength},animationTime*(init_y - target_y),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
     }
     if(init_y<target_y){
         var moveLength='-='+((target_y-init_y)*105).toString()+'px';
         $(initSName).css('position','relative');
-        $(initSName).animate({right:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+        $(initSName).animate({right:moveLength},animationTime*(target_y - init_y),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
     }
     if(init_x<target_x){
         var moveLength='+='+((target_x-init_x)*104).toString()+'px';
         $(initSName).css('position','relative');
-        $(initSName).animate({top:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+        $(initSName).animate({top:moveLength},animationTime*(target_x - init_x),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
     }
     if(init_x>target_x){
         var moveLength='-='+((init_x-target_x)*104).toString()+'px';
         $(initSName).css('position','relative');
-        $(initSName).animate({top:moveLength},animationTime,"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+        $(initSName).animate({top:moveLength},animationTime*(init_x-target_x),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
     }
 
 }
