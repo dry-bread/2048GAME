@@ -1,7 +1,7 @@
 body{
     background-color: blanchedalmond;
     resize: none;
-    
+   overflow:hidden;
 }
 .allContent{
     text-align: center;
