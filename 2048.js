@@ -67,7 +67,7 @@ function AddNewCon(x, y, num) {
 
     };
 
-        setTimeout(addAnimate, animationTime*3*callBackCount);
+        setTimeout(addAnimate, animationTime*4*callBackCount);
         callBackCount=0;
 }
 function CheckLose() {
