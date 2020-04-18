@@ -203,6 +203,7 @@ function LeftArrow() {
                         //LevelCombine(i,j,jtemp,gameCon[i][j],'combine');
                         MoveCon(i, jtemp, i, j, gameCon[i][j]);
                         UpDateScore(gameCon[i][j]);
+                        break;
                     }
                 }
                 temp = gameCon[i].indexOf(0);
@@ -245,8 +246,7 @@ function RightArrow() {
                         //LevelCombine(i, j, jtemp, gameCon[i][j], 'combine');
                         MoveCon(i, jtemp, i, j, gameCon[i][j]);
                         UpDateScore(gameCon[i][j]);
-
-
+                        break;
                     }
 
                 }
@@ -287,7 +287,7 @@ function DownArrow() {
                         //VerticalCombine(j, i, itemp, gameCon[i][j], 'combine');
                         MoveCon(itemp, j, i, j, gameCon[i][j]);
                         UpDateScore(gameCon[i][j]);
-
+                        break;
                     }
 
                 }
@@ -337,8 +337,7 @@ function UpArrow() {
                         //VerticalCombine(j, i, itemp, gameCon[i][j], 'combine');
                         MoveCon(itemp, j, i, j, gameCon[i][j]);
                         UpDateScore(gameCon[i][j]);
-
-
+                        break;
                     }
 
                 }
