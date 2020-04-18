@@ -8,6 +8,7 @@ var nowScoreNumber = 0;
 var bestHistoryNumber = 0;
 var callBackCount=0;
 function init() {
+
     $('#game .con>div').remove();
     if (!localStorage.getItem("gameCon")) {
         gameCon = [
