@@ -590,7 +590,7 @@ $(window).on("touchend", function (e) {
 
     }
 });
-$('.youWin').on("tap",function(){
+$('.youWin').on("touchstart",function(){
     $('.youWin').hide();
         gameCon = [
             [0, 0, 0, 0],
@@ -608,7 +608,7 @@ $('.youWin').on("tap",function(){
 
     
 })
-$('button').on("tap",function(){
+$('button').on("touchstart",function(){
     gameCon = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
