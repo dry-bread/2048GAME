@@ -1,5 +1,7 @@
 body{
     background-color: blanchedalmond;
+    resize: none;
+    
 }
 .allContent{
     text-align: center;

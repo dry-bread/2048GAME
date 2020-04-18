@@ -6,6 +6,7 @@ var nowScore = '#nowScore>span';
 var bestHistory = '#bestHistory>span';
 var nowScoreNumber = 0;
 var bestHistoryNumber = 0;
+var callBackCount=0;
 function init() {
     $('#game .con>div').remove();
     if (!localStorage.getItem("gameCon")) {
@@ -65,7 +66,8 @@ function AddNewCon(x, y, num) {
 
     };
 
-    setTimeout(addAnimate, animationTime*10);
+        setTimeout(addAnimate, animationTime*3*callBackCount);
+        callBackCount=0;
 }
 function CheckLose() {
     var gameConTemp = gameCon;
@@ -129,6 +131,7 @@ function AddNewNumber() {
 
 }
 function AnimateEnd(init_x, init_y, target_x, target_y, target_num){
+    callBackCount++;
     return     function (){
     console.log('('+init_x+','+init_y+') to ('+target_x+','+target_y+')');
         var initSName = '#c' + init_x.toString() + init_y.toString() + '>div';
