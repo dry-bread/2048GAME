@@ -2,6 +2,7 @@ body{
     background-color: blanchedalmond;
     resize: none;
     touch-action: none;
+    height: 100vm;
 }
 .allContent{
     text-align: center;
