@@ -36,150 +36,321 @@ button#replay{
     text-align: center;
 }
 #game .col-3{
+    height: 97.5px;
+    margin-bottom: 12px;
     padding: 0px;
+}
+#game .row{
+    width: 438px;
+    margin: 0px;
+    padding: 0px;
+}
+#game{
+    background-color:rgb(250, 192, 98);
+    width: 450px;
+    border-radius: 1%;
+    height: 450px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.comeout{
+    animation-name: jumpout;
+    animation-duration: 0.2s;
+}
+@keyframes jumpout{
+    0%{width: 0px;height: 0px;font-size: 0px;padding-top: 0px;top: 210px;margin-left: 50px;}
+    50%{top: 157px;height: 108px;width: 108px;font-size: 70px;padding-top: 10px;margin-left: 0px;}
+    100%{top: 162px;height: 98px;width: 98px;font-size: 60px;padding-top: 8px;}
+}
+.c11{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transition: 100ms ease-in-out;
+}
+.c21{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateY(109px);
+    transition-property: transform;
+    transition: 100ms ease-in-out;
+}
+.c31{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateY(219px);
+    transition: 100ms ease-in-out;
+}
+.c41{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateY(328px);
+    transition: 100ms ease-in-out;
+}
+.c12{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateX(109px);
+    transition: 100ms ease-in-out;
+
+}
+.c22{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(109px,109px);
+    transition: 100ms ease-in-out;
+}
+.c32{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(109px,219px);
+    transition: 100ms ease-in-out;
+}
+.c42{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(109px,328px);
+    transition: 100ms ease-in-out;
+
+}
+.c13{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateX(219px);
+    transition: 100ms ease-in-out;
+
+}
+.c23{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(219px,109px);
+    transition: 100ms ease-in-out;
+
+}
+.c33{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(219px,219px);
+    transition: 100ms ease-in-out;
+
+}
+.c43{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(219px,328px);
+    transition: 100ms ease-in-out;
+}
+.c14{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translateX(328px);
+    transition: 100ms ease-in-out;
+
+
+}
+.c24{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(328px,109px);
+    transition: 100ms ease-in-out;
+
+}
+.c34{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(328px,219px);
+    transition: 100ms ease-in-out;
+
+}
+.c44{
+    position: absolute;
+    z-index: 70;
+    top: 162px;
+    height: 98px;
+    width: 98px;
+    transform: translate(328px,328px);
+    transition: 100ms ease-in-out;
+
 }
 #game .con{
     background-color:rgb(249, 227, 177);
-    height: 100px;
-    margin: 2px 2px 2px 2px;
+    height: 97.5px;
+    width: 97.5px;
     border-radius: 10%;
-    padding: 0%;
+    margin-left: 0px ;
+    margin-right: 12px;
 }
+
 .number2{
     background-color: whitesmoke;
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
+    padding-top: 8px;
     color: rgb(153, 116, 56);
-    z-index: 50;
-    padding-top: 9%;
+    z-index: 70;
+    
 }
 .number4{
     background-color:rgb(253, 230, 193);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
     color: rgb(153, 116, 56);
     z-index: 50;
-    padding-top: 9%;
+    padding-top:  8px;
 
 }
 .number8{
     background-color:rgb(248, 190, 163);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
     color: rgb(153, 116, 56);
     z-index: 50;
-    padding-top: 9%;
+    padding-top:  8px;
 
 }
 .number16{
     background-color:rgb(250, 156, 101);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
     z-index: 50;
-    padding-top: 9%;
+    padding-top:  8px;
 
 }
 .number32{
     background-color:rgb(250, 125, 67);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 }
 .number64{
     background-color:rgb(253, 92, 17);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 60px;
     color:whitesmoke;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 }
 .number128{
     background-color:rgb(248, 59, 52);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 50px;
     line-height: 100px;
     color:whitesmoke;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 }
 .number256{
     background-color:red;
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 50px;
     color:whitesmoke;
     line-height: 100px;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 }
 .number512{
     background-color:red;
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 50px;
     color:whitesmoke;
     line-height: 100px;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 }
 .number1024{
     background-color:rgb(212, 50, 50);
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 40px;
     color:whitesmoke;
     line-height: 100px;
     z-index: 50;
-    padding-top: 9%;
+    padding-top:  8px;
 
 
 }
 .number2048{
     background-color:brown;
     margin: 0;
-    height: 100px;
     border-radius: 10%;
     text-align: center;
     font-size: 40px;
     color:whitesmoke;
     line-height: 100px;
     z-index: 50;
-    padding-top: 9%;
+    padding-top: 8px;
 
 
 }

@@ -7,9 +7,10 @@ var bestHistory = '#bestHistory>span';
 var nowScoreNumber = 0;
 var bestHistoryNumber = 0;
 var callBackCount=0;
+var gameconDiv='.gamecon';
 function init() {
 
-    $('#game .con>div').remove();
+    $('.gamecon>div').remove();
     if (!localStorage.getItem("gameCon")) {
         gameCon = [
             [0, 0, 0, 0],
@@ -36,6 +37,7 @@ function init() {
     });
 
 }
+//更新分数
 function UpDateScore(addScoreNumber) {
     nowScoreNumber += addScoreNumber;
     if (nowScoreNumber > bestHistoryNumber) {
@@ -51,24 +53,17 @@ function UpDateScore(addScoreNumber) {
 function AddNewCon(x, y, num) {
     x += 1;
     y += 1;
-    var addAnimate = function () {
-        console.log('add: ('+x+','+ y+')'+num);
-        var adddiv = document.createElement('div');
-        adddiv.innerText = num;
-        var className = 'number' + num.toString();
-        adddiv.classList.add(className);
-        var idName = '#c' + x.toString() + y.toString();
-        $(idName).append(adddiv);
-        idName = '#c' + x.toString() + y.toString()+'>div';
-        $(idName).hide();
-        $(idName).fadeIn(10);
-
-        // console.log('added: ('+x+','+ y+')'+num);
-
-    };
-
-        setTimeout(addAnimate, animationTime*4*callBackCount);
-        callBackCount=0;
+    var adddiv = document.createElement('div');
+    adddiv.innerText = num;
+    var className = 'number' + num.toString();
+    var positionName='c'+x.toString()+y.toString();
+    adddiv.classList.add(className);
+    adddiv.classList.add(positionName);
+    adddiv.classList.add('comeout');
+    $(gameconDiv).append(adddiv);
+    // idName = '#c' + x.toString() + y.toString()+'>div';
+    // $(idName).hide();
+    // $(idName).fadeIn(10);
 }
 function CheckLose() {
     var gameConTemp = gameCon;
@@ -131,56 +126,25 @@ function AddNewNumber() {
     }
 
 }
-function AnimateEnd(init_x, init_y, target_x, target_y, target_num){
-    callBackCount++;
-    return     function (){
-    console.log('('+init_x+','+init_y+') to ('+target_x+','+target_y+')');
-        var initSName = '#c' + init_x.toString() + init_y.toString() + '>div';
-        var targetSName = '#c' + target_x.toString() + target_y.toString() + '>div';
-        var targetClassName = 'number' + target_num.toString();
-        $(initSName).remove();
-        $(targetSName).remove();
-        targetSName = '#c' + target_x.toString() + target_y.toString();
-        var addDiv = document.createElement('div');
-        addDiv.classList.add(targetClassName);
-        addDiv.innerText = target_num;
-        $(targetSName).append(addDiv);
-        if (target_num === 2048) {
-            $('youWin').text('YOU WIN!');
-            $('youWin').show();
-        }
-    }
-}
 //移动
 function MoveCon(init_x, init_y, target_x, target_y, target_num) {
     init_x++;
     init_y++;
     target_x++;
     target_y++;
-    var initSName = '#c' + init_x.toString() + init_y.toString() + '>div';
-    console.log('('+init_x+','+init_y+') to ('+target_x+','+target_y+')');
-    if(init_y>target_y){
-        var moveLength='-='+((init_y-target_y)*105).toString()+'px';
-        //console.log(moveLength);
-        $(initSName).css('position','relative');
-        $(initSName).animate({left:moveLength},animationTime*(init_y - target_y),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
+    var initCName = '.c' + init_x.toString() + init_y.toString();
+    var initClass = 'c' + init_x.toString() + init_y.toString();
+    var targetCName = '.c' + target_x.toString() + target_y.toString();
+    var targetClass= 'c' + target_x.toString() + target_y.toString();
+    var tempNumClass='number'+target_num.toString();
+    $(targetCName).remove();
+    $(initCName).addClass(targetClass).removeClass(initClass);
+    $(targetCName).addClass(tempNumClass);
+    $(targetCName).text(target_num);
+    if (target_num === 2048) {
+        $('youWin').text('YOU WIN!');
+        $('youWin').show();
     }
-    if(init_y<target_y){
-        var moveLength='-='+((target_y-init_y)*105).toString()+'px';
-        $(initSName).css('position','relative');
-        $(initSName).animate({right:moveLength},animationTime*(target_y - init_y),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
-    }
-    if(init_x<target_x){
-        var moveLength='+='+((target_x-init_x)*104).toString()+'px';
-        $(initSName).css('position','relative');
-        $(initSName).animate({top:moveLength},animationTime*(target_x - init_x),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
-    }
-    if(init_x>target_x){
-        var moveLength='-='+((init_x-target_x)*104).toString()+'px';
-        $(initSName).css('position','relative');
-        $(initSName).animate({top:moveLength},animationTime*(init_x-target_x),"linear",AnimateEnd(init_x, init_y, target_x, target_y, target_num));
-    }
-
 }
 //向左
 function LeftArrow() {
@@ -410,7 +374,7 @@ $('button#replay').click(function (e) {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
-    $('#game .con>div').remove();
+    $('.gamecon>div').remove();
     nowScoreNumber = 0;
     $(nowScore).text(nowScoreNumber.toString());
     localStorage.setItem("gameCon", gameCon);
@@ -438,20 +402,6 @@ var moveEndX;
 var moveEndY;
 var X;
 var Y;
-// $(window).on("swipeleft",function(){
-//     LeftArrow();
-//     if (AddFlag === 1) {
-//         AddNewNumber();
-//         AddFlag = 0;
-//     }
-//   });
-//   $(window).on("swiperight",function(){
-//     RightArrow();
-//     if (AddFlag === 1) {
-//         AddNewNumber();
-//         AddFlag = 0;
-//     }
-//   });
 $(window).on("touchstart", function (e) {
     // 判断默认行为是否可以被禁用
     if (e.cancelable) {
@@ -514,7 +464,7 @@ $(window).on("touchend", function (e) {
 
     }
 });
-$('.youWin').on("touchstart",function(){
+$('.youWin').on("touchstart",function(){//重新开始
     $('.youWin').hide();
         gameCon = [
             [0, 0, 0, 0],
@@ -522,7 +472,7 @@ $('.youWin').on("touchstart",function(){
             [0, 0, 0, 0],
             [0, 0, 0, 0]
         ];
-        $('#game .con>div').remove();
+        $('.gamecon>div').remove();
         nowScoreNumber = 0;
         $(nowScore).text(nowScoreNumber.toString());
         localStorage.setItem("gameCon", gameCon);
@@ -532,14 +482,14 @@ $('.youWin').on("touchstart",function(){
 
     
 })
-$('button').on("touchstart",function(){
+$('button').on("touchstart",function(){//replay手机端
     gameCon = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
-    $('#game .con>div').remove();
+    $('.gamecon>div').remove();
     nowScoreNumber = 0;
     $(nowScore).text(nowScoreNumber.toString());
     localStorage.setItem("gameCon", gameCon);
