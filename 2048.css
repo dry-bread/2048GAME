@@ -57,6 +57,8 @@ button#replay{
 .comeout{
     animation-name: jumpout;
     animation-duration: 0.2s;
+    -webkit-animation-name: jumpout;
+    -webkit-animation-duration: 0.2s;
 }
 @keyframes jumpout{
     0%{width: 0px;height: 0px;font-size: 0px;padding-top: 0px;top: 210px;margin-left: 50px;}
@@ -70,6 +72,7 @@ button#replay{
     height: 98px;
     width: 98px;
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
 }
 .c21{
     position: absolute;
@@ -80,6 +83,9 @@ button#replay{
     transform: translateY(109px);
     transition-property: transform;
     transition: 100ms ease-in-out;
+    -webkit-transform: translateY(109px);
+    -webkit-transition-property: transform;
+    -webkit-transition: 100ms ease-in-out;
 }
 .c31{
     position: absolute;
@@ -89,6 +95,8 @@ button#replay{
     width: 98px;
     transform: translateY(219px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translateY(219px);
 }
 .c41{
     position: absolute;
@@ -98,6 +106,9 @@ button#replay{
     width: 98px;
     transform: translateY(328px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translateY(328px);
+
 }
 .c12{
     position: absolute;
@@ -107,6 +118,10 @@ button#replay{
     width: 98px;
     transform: translateX(109px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translateX(109px);
+
+    
 
 }
 .c22{
@@ -117,6 +132,10 @@ button#replay{
     width: 98px;
     transform: translate(109px,109px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(109px,109px);
+
+
 }
 .c32{
     position: absolute;
@@ -126,6 +145,9 @@ button#replay{
     width: 98px;
     transform: translate(109px,219px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(109px,219px);
+
 }
 .c42{
     position: absolute;
@@ -135,6 +157,9 @@ button#replay{
     width: 98px;
     transform: translate(109px,328px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(109px,328px);
+
 
 }
 .c13{
@@ -145,6 +170,8 @@ button#replay{
     width: 98px;
     transform: translateX(219px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translateX(219px);
 
 }
 .c23{
@@ -155,6 +182,8 @@ button#replay{
     width: 98px;
     transform: translate(219px,109px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(219px,109px);
 
 }
 .c33{
@@ -165,6 +194,8 @@ button#replay{
     width: 98px;
     transform: translate(219px,219px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(219px,219px);
 
 }
 .c43{
@@ -175,6 +206,9 @@ button#replay{
     width: 98px;
     transform: translate(219px,328px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(219px,328px);
+
 }
 .c14{
     position: absolute;
@@ -184,8 +218,8 @@ button#replay{
     width: 98px;
     transform: translateX(328px);
     transition: 100ms ease-in-out;
-
-
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translateX(328px);
 }
 .c24{
     position: absolute;
@@ -195,6 +229,8 @@ button#replay{
     width: 98px;
     transform: translate(328px,109px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(328px,109px);
 
 }
 .c34{
@@ -205,6 +241,8 @@ button#replay{
     width: 98px;
     transform: translate(328px,219px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(328px,219px);
 
 }
 .c44{
@@ -215,6 +253,8 @@ button#replay{
     width: 98px;
     transform: translate(328px,328px);
     transition: 100ms ease-in-out;
+    -webkit-transition: 100ms ease-in-out;
+    -webkit-transform: translate(328px,328px);
 
 }
 #game .con{
