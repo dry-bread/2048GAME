@@ -1,7 +1,10 @@
 body{
+    display: flex;
+    flex-direction:column;
     background-color: blanchedalmond;
     resize: none;
     touch-action: none;
+    align-items: stretch
 }
 .allContent{
     text-align: center;

@@ -385,6 +385,12 @@ $('button#replay').click(function (e) {
 $(window).click(function () {
     $('.youWin').hide();
 });
+var startX;
+var startY;
+var moveEndX;
+var moveEndY;
+var X;
+var Y;
 $("body").on("touchstart", function (e) {
     // 判断默认行为是否可以被禁用
     if (e.cancelable) {
@@ -394,15 +400,9 @@ $("body").on("touchstart", function (e) {
         }
     }
     startX = e.originalEvent.changedTouches[0].pageX,
-        startY = e.originalEvent.changedTouches[0].pageY;
+    startY = e.originalEvent.changedTouches[0].pageY;
 });
-var startX;
-var startY;
-var moveEndX;
-var moveEndY;
-var X;
-var Y;
-$(window).on("touchstart", function (e) {
+$(window).on("touchmove", function (e) {
     // 判断默认行为是否可以被禁用
     if (e.cancelable) {
         // 判断默认行为是否已经被禁用
@@ -410,8 +410,6 @@ $(window).on("touchstart", function (e) {
             e.preventDefault();
         }
     }
-    startX = e.originalEvent.changedTouches[0].pageX,
-    startY = e.originalEvent.changedTouches[0].pageY;
 });
 $(window).on("touchend", function (e) {
     // 判断默认行为是否可以被禁用
